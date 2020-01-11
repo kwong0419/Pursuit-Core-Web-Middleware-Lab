@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let input = document.querySelector("#input")
     let resultBtn = document.querySelector("#resultBtn")
 
+
     resultBtn.addEventListener("click", () => {
         container.innerHTML = "";
         if(input.value === ""){
@@ -22,4 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
             })
         }
     })
+
+    let floor = document.querySelector("#floor")
+    let ceil = document.querySelector("#ceil")
+    
+    
+    
 })
