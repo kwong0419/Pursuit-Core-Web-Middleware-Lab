@@ -4,7 +4,7 @@ const port = 3005;
 const app = express();
 app.use(cors());
 
-let animalsArr = ["lion", "zebra", "tiger", "elephant", "shark"];
+let animalsArr = ["lion", "zebra", "tiger", "elephant", "shark", "giraffe", ""];
 
 const isAnimal = (req, res, next) => {
     console.log(req.params);
