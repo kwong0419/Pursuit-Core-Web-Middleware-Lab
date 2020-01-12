@@ -4,6 +4,7 @@ const port = 3002;
 const app = express();
 app.use(cors());
 
+// Problem 1
 let animalsArr = ["lion", "zebra", "tiger", "elephant", "shark", "giraffe", "dog"];
 
 const isAnimal = (req, res, next) => {
@@ -29,7 +30,7 @@ app.get("/animal/:name", isAnimal, (req, res) => {
     res.json(animalsArr);
 })
 
-
+// Problem 2
 const generateSpread = (req, res, next) => {
     console.log(req.params);
     let range = [];
@@ -50,7 +51,36 @@ app.get("/random", generateSpread, (req, res) => {
 })
 
 
+// Problem 3
+let queue = ["Cassidy", "Kevin", "Corey", "Jon", "Jhenya", "Caroline"]
 
+const handleQueue = (req, res, next) => {
+    if(req.params.queueType === "peek"){
+        res.json({
+            status: "Success",
+            data: queue[queue.length-1],
+        })
+    } else if(req.params.queueType === "enqueue"){
+        res.json({
+            status: "Success",
+            enqueue: req.query.name
+        })
+        queue.unshift(req.query.name);
+        console.log(queue);
+    } else if(req.params.queueType === "dequeue"){
+        res.json({
+            status: "Success",
+            dequeue: queue[queue.length-1],
+        })
+        queue.pop();
+        console.log(queue);
+    } 
+    next();
+}
+
+app.get("/queue/:queueType", handleQueue, (req,res) => {
+    // res.json({queue});
+})
 
 
 
